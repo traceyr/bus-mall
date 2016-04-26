@@ -1,10 +1,16 @@
 //js will go here\
 var imgAry = [];
+var elOne = document.getElementById('img-1');
+var elTwo = document.getElementById('img-2');
+var elThree = document.getElementById('img-3');
+var totalClicks = 0;
 
 function OurProducts(imgName, imgType, path) {
   this.imgName = imgName;
   this.imgType = imgType;
   this.path = '<img src="' + path + '" alt="' + this.imgName + '" type="' + this.imgType + '">';
+  this.numAppearences = 0;
+  this.numClicks = 0;
   imgAry.push(this);
 }
 
@@ -45,20 +51,25 @@ function testing() {
     var randNum = randMath(imgAry.length, 0);
     var five = imgAry[randNum];
     if (emptyAry.length == 0) {
+      imgAry[randNum].numAppearences ++;
       emptyAry.push(five.path);
     } else if(emptyAry[0].path !== five.path && emptyAry.length === 1) {
+      imgAry[randNum].numAppearences ++;
       emptyAry.push(five.path);
     } else if (emptyAry[0].path !== five.path && emptyAry[1] !== five.path && emptyAry.length === 2) {
+      imgAry[randNum].numAppearences ++;
       emptyAry.push(five.path);
-      console.log(emptyAry);
       return emptyAry;
     }
   }
 }
 console.log(emptyAry);
-// var elEl = el.innerHTML = imgAry[0].path;
-// el.appendChild(elEl);
-// var elTwo = document.getElementById('img-2');
-// elTwo.innerHTML = imgAry[1].path;
-// var elThree = document.getElementById('img-3');
-// elThree.innerHTML = imgAry[2].path;
+
+function handleImages() {
+  testing();
+  elOne.innerHTML = emptyAry[0];
+  elTwo.innerHTML = emptyAry[1];
+  elThree.innerHTML = emptyAry[2];
+  emptyAry = [];
+}
+handleImages();
