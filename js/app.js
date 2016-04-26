@@ -70,13 +70,46 @@ function handleImages() {
 }
 handleImages();
 
-elOne.addEventListener('click', handleClick, false);
-elTwo.addEventListener('click', handleClick, false);
-elThree.addEventListener('click', handleClick, false);
+elOne.addEventListener('click', handleClickOne, false);
+elTwo.addEventListener('click', handleClickTwo, false);
+elThree.addEventListener('click', handleClickThree, false);
 
-function handleClick() {
+function handleClickOne() {
   if(totalClicks < 5) {
     totalClicks++;
+    for(var i = 0; i < imgAry.length; i++) {
+      if(elOne.innerHTML === imgAry[i].path) {
+        imgAry[i].numClicks++;
+      }
+    }
+    console.log(totalClicks);
+    emptyAry = [];
+    handleImages();
+  }
+}
+
+function handleClickTwo() {
+  if(totalClicks < 5) {
+    totalClicks++;
+    for(var i = 0; i < imgAry.length; i++) {
+      if(elOne.innerHTML === imgAry[i].path) {
+        imgAry[i].numClicks++;
+      }
+    }
+    console.log(totalClicks);
+    emptyAry = [];
+    handleImages();
+  }
+}
+
+function handleClickThree() {
+  if(totalClicks < 5) {
+    totalClicks++;
+    for(var i = 0; i < imgAry.length; i++) {
+      if(elOne.innerHTML === imgAry[i].path) {
+        imgAry[i].numClicks++;
+      }
+    }
     console.log(totalClicks);
     emptyAry = [];
     handleImages();
