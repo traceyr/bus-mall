@@ -1,15 +1,12 @@
 body {
-
+  background-color: pink;
 }
 
-.img-1 {
-  border: solid;
+ul li{
+  list-style-type: none;
 }
 
-.img-2 {
-  border: solid;
-}
-
-.img-3 {
+img {
+  float: left;
   border: solid;
 }
