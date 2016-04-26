@@ -1,15 +1,13 @@
-//js will go here\
 var imgAry = [];
 var emptyAry = [];
-var elOne = document.getElementById('img-1');
-var elTwo = document.getElementById('img-2');
-var elThree = document.getElementById('img-3');
+var el = document.getElementById('imgs');
+var bt = document.getElementById('btn');
 var totalClicks = 0;
 
 function OurProducts(imgName, imgType, path) {
   this.imgName = imgName;
   this.imgType = imgType;
-  this.path = '<img src="' + path + '" alt="' + this.imgName + '" type="' + this.imgType + '">';
+  this.path = '<img src="' + path + '" alt="' + this.imgName + '" id="' + this.imgName + '">';
   this.numAppearences = 0;
   this.numClicks = 0;
   imgAry.push(this);
@@ -36,8 +34,6 @@ new OurProducts('USB', 'JPG', 'images/usb.jpg');
 new OurProducts('Water-Can', 'JPG', 'images/water-can.jpg');
 new OurProducts('Wine-Glass', 'JPG', 'images/wine-glass.jpg');
 
-console.log(imgAry);
-
 function randMath(max, min) {
   var calc = Math.floor(Math.random() * (max - min));
   return calc;
@@ -49,70 +45,44 @@ function testing() {
     var five = imgAry[randNum];
     if(emptyAry.length == 0) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five.path);
-    } else if(emptyAry[0] !== five.path && emptyAry.length == 1) {
+      emptyAry.push(five);
+    } else if(emptyAry[0].path !== five.path && emptyAry.length == 1) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five.path);
-    } else if(emptyAry[0] !== five.path && emptyAry[1] !== five.path && emptyAry.length === 2) {
+      emptyAry.push(five);
+    } else if(emptyAry[0].path !== five.path && emptyAry[1].path !== five.path && emptyAry.length === 2) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five.path);
+      emptyAry.push(five);
       return emptyAry;
     }
   }
 }
-console.log(emptyAry);
 
 function handleImages() {
   testing();
-  elOne.innerHTML = emptyAry[0];
-  elTwo.innerHTML = emptyAry[1];
-  elThree.innerHTML = emptyAry[2];
+  for(var i = 0; i < emptyAry.length; i++) {
+    var li = document.createElement('li');
+    li.innerHTML = emptyAry[i].path;
+    el.appendChild(li);
+  }
 }
 handleImages();
 
-elOne.addEventListener('click', handleClickOne, false);
-elTwo.addEventListener('click', handleClickTwo, false);
-elThree.addEventListener('click', handleClickThree, false);
+el.addEventListener('click', handleClick);
 
-function handleClickOne() {
-  if(totalClicks < 5) {
+function handleClick(event) {
+  if(totalClicks < 25) {
     totalClicks++;
     for(var i = 0; i < imgAry.length; i++) {
-      if(elOne.innerHTML === imgAry[i].path) {
+      if(event.target.id === imgAry[i].imgName) {
         imgAry[i].numClicks++;
       }
     }
-    console.log(totalClicks);
     emptyAry = [];
+    var elem = document.getElementById('imgs');
+    elem.innerHTML = ' ';
     handleImages();
-  }
-}
-
-function handleClickTwo() {
-  if(totalClicks < 5) {
-    totalClicks++;
-    for(var i = 0; i < imgAry.length; i++) {
-      if(elTwo.innerHTML === imgAry[i].path) {
-        imgAry[i].numClicks++;
-      }
-    }
-    console.log(totalClicks);
-    emptyAry = [];
-    handleImages();
-  }
-}
-
-function handleClickThree() {
-  if(totalClicks < 5) {
-    totalClicks++;
-    for(var i = 0; i < imgAry.length; i++) {
-      if(elThree.innerHTML === imgAry[i].path) {
-        imgAry[i].numClicks++;
-      }
-    }
-    console.log(totalClicks);
-    emptyAry = [];
-    handleImages();
+  } else if(totalClicks === 25) {
+    btn.addEventListener('click', handleButtonChart);
   }
 }
 
@@ -121,24 +91,22 @@ function handleButtonChart() {
   for(var t = 0; t < imgAry.length; t++) {
     names.push(imgAry[t].imgName);
   }
-  console.log(names);
 
   var votes = [];
   for(var t = 0; t < imgAry.length; t++) {
     votes.push(imgAry[t].numClicks);
   }
-  console.log(votes);
 
   var data = {
     labels: names,
     datasets: [
       {
         data: votes,
-        backgroundColor: [
-          '#FF6384'
-        ],
+        backgroundColor:
+          '#5D5D81'
+        ,
         hoverBackgroundColor: [
-          '#FF6384'
+          '#3B3355'
         ]
       }]
   };
@@ -150,4 +118,3 @@ function handleButtonChart() {
     data: data
   });
 }
-//The only way I could think to do the counter was to create three different handleClick functions and say that the el.innerHTML === imgAry[i].path,(inside a for loop) then increase the numClicks variable that way. But that seemed like a lot of extra work. I am sure there is an easier way to say if this id is clicked and that innerHTML matches the imgAry[i].path, then increase the numCLick variable.
