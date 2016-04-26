@@ -92,7 +92,7 @@ function handleClickTwo() {
   if(totalClicks < 5) {
     totalClicks++;
     for(var i = 0; i < imgAry.length; i++) {
-      if(elOne.innerHTML === imgAry[i].path) {
+      if(elTwo.innerHTML === imgAry[i].path) {
         imgAry[i].numClicks++;
       }
     }
@@ -106,7 +106,7 @@ function handleClickThree() {
   if(totalClicks < 5) {
     totalClicks++;
     for(var i = 0; i < imgAry.length; i++) {
-      if(elOne.innerHTML === imgAry[i].path) {
+      if(elThree.innerHTML === imgAry[i].path) {
         imgAry[i].numClicks++;
       }
     }
