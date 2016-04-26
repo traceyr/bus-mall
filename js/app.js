@@ -117,6 +117,37 @@ function handleClickThree() {
 }
 
 function handleButtonChart() {
-  
+  var names = [];
+  for(var t = 0; t < imgAry.length; t++) {
+    names.push(imgAry[t].imgName);
+  }
+  console.log(names);
+
+  var votes = [];
+  for(var t = 0; t < imgAry.length; t++) {
+    votes.push(imgAry[t].numClicks);
+  }
+  console.log(votes);
+
+  var data = {
+    labels: names,
+    datasets: [
+      {
+        data: votes,
+        backgroundColor: [
+          '#FF6384'
+        ],
+        hoverBackgroundColor: [
+          '#FF6384'
+        ]
+      }]
+  };
+
+  var votesChart = document.getElementById('click-chart').getContext('2d');
+
+  var clicksChart = new Chart(votesChart, {
+    type: 'bar',
+    data: data
+  });
 }
 //The only way I could think to do the counter was to create three different handleClick functions and say that the el.innerHTML === imgAry[i].path,(inside a for loop) then increase the numClicks variable that way. But that seemed like a lot of extra work. I am sure there is an easier way to say if this id is clicked and that innerHTML matches the imgAry[i].path, then increase the numCLick variable.
