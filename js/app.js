@@ -47,15 +47,15 @@ function testing() {
   while(emptyAry.length < 3){
     var randNum = randMath(imgAry.length, 0);
     var five = imgAry[randNum];
-    if(emptyAry.length === 0) {
+    if(emptyAry.length == 0) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
-    } else if(emptyAry[0].path !== five.path && emptyAry.length === 1) {
+      emptyAry.push(five.path);
+    } else if(emptyAry[0] !== five.path && emptyAry.length == 1) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
-    } else if(emptyAry[0].path !== five.path && emptyAry[1].path !== five.path && emptyAry.length === 2) {
+      emptyAry.push(five.path);
+    } else if(emptyAry[0] !== five.path && emptyAry[1] !== five.path && emptyAry.length === 2) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
+      emptyAry.push(five.path);
       return emptyAry;
     }
   }
@@ -64,27 +64,21 @@ console.log(emptyAry);
 
 function handleImages() {
   testing();
-  elOne.innerHTML = emptyAry[0].path;
-  elTwo.innerHTML = emptyAry[1].path;
-  elThree.innerHTML = emptyAry[2].path;
+  elOne.innerHTML = emptyAry[0];
+  elTwo.innerHTML = emptyAry[1];
+  elThree.innerHTML = emptyAry[2];
 }
 handleImages();
 
-// elOne.addEventListener('click', handleClickOne, false);
-// elTwo.addEventListener('click', handleClickTwo, false);
-// elThree.addEventListener('click', handleClickThree, false);
+elOne.addEventListener('click', handleClickOne, false);
+elTwo.addEventListener('click', handleClickTwo, false);
+elThree.addEventListener('click', handleClickThree, false);
 
-elOne.addEventListener('click', handleClick, false);
-elTwo.addEventListener('click', handleClick, false);
-elThree.addEventListener('click', handleClick, false);
-
-function handleClick(e) {
+function handleClickOne() {
   if(totalClicks < 5) {
-    var imgTag = e.target.path;
-    console.log(imgTag);
     totalClicks++;
     for(var i = 0; i < imgAry.length; i++) {
-      if(imgTag === imgAry[i].path) {
+      if(elOne.innerHTML === imgAry[i].path) {
         imgAry[i].numClicks++;
       }
     }
@@ -94,45 +88,31 @@ function handleClick(e) {
   }
 }
 
-// function handleClickOne() {
-//   if(totalClicks < 5) {
-//     totalClicks++;
-//     for(var i = 0; i < imgAry.length; i++) {
-//       if(elOne.innerHTML === imgAry[i].path) {
-//         imgAry[i].numClicks++;
-//       }
-//     }
-//     console.log(totalClicks);
-//     emptyAry = [];
-//     handleImages();
-//   }
-// }
-//
-// function handleClickTwo() {
-//   if(totalClicks < 5) {
-//     totalClicks++;
-//     for(var i = 0; i < imgAry.length; i++) {
-//       if(elTwo.innerHTML === imgAry[i].path) {
-//         imgAry[i].numClicks++;
-//       }
-//     }
-//     console.log(totalClicks);
-//     emptyAry = [];
-//     handleImages();
-//   }
-// }
-//
-// function handleClickThree() {
-//   if(totalClicks < 5) {
-//     totalClicks++;
-//     for(var i = 0; i < imgAry.length; i++) {
-//       if(elThree.innerHTML === imgAry[i].path) {
-//         imgAry[i].numClicks++;
-//       }
-//     }
-//     console.log(totalClicks);
-//     emptyAry = [];
-//     handleImages();
-//   }
-// }
+function handleClickTwo() {
+  if(totalClicks < 5) {
+    totalClicks++;
+    for(var i = 0; i < imgAry.length; i++) {
+      if(elTwo.innerHTML === imgAry[i].path) {
+        imgAry[i].numClicks++;
+      }
+    }
+    console.log(totalClicks);
+    emptyAry = [];
+    handleImages();
+  }
+}
+
+function handleClickThree() {
+  if(totalClicks < 5) {
+    totalClicks++;
+    for(var i = 0; i < imgAry.length; i++) {
+      if(elThree.innerHTML === imgAry[i].path) {
+        imgAry[i].numClicks++;
+      }
+    }
+    console.log(totalClicks);
+    emptyAry = [];
+    handleImages();
+  }
+}
 //The only way I could think to do the counter was to create three different handleClick functions and say that the el.innerHTML === imgAry[i].path,(inside a for loop) then increase the numClicks variable that way. But that seemed like a lot of extra work. I am sure there is an easier way to say if this id is clicked and that innerHTML matches the imgAry[i].path, then increase the numCLick variable.
