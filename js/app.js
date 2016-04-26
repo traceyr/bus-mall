@@ -70,6 +70,23 @@ function handleImages() {
   elOne.innerHTML = emptyAry[0];
   elTwo.innerHTML = emptyAry[1];
   elThree.innerHTML = emptyAry[2];
-  emptyAry = [];
 }
 handleImages();
+
+elOne.addEventListener('click', handleClick, false);
+elTwo.addEventListener('click', handleClick, false);
+elThree.addEventListener('click', handleClick, false);
+
+function handleClick() {
+  if(totalClicks < 5) {
+    totalClicks++;
+    console.log(totalClicks);
+    emptyAry = [];
+    handleImages();
+  }
+}
+  // for(var i = 0; i < emptyAry.length; i++){
+  //   if(emptyAry[i].path === clicked) {
+  //     console.log(emptyAry[i]);
+  //   }
+  // }
