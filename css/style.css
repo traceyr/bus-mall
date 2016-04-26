@@ -2,11 +2,20 @@ body {
   background-color: pink;
 }
 
+section {
+}
+
 ul li{
   list-style-type: none;
 }
 
-img {
-  float: left;
-  border: solid;
+ul {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button {
+  display: block;
+  padding: 15px;
 }

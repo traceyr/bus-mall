@@ -115,4 +115,8 @@ function handleClickThree() {
     handleImages();
   }
 }
+
+function handleButtonChart() {
+  
+}
 //The only way I could think to do the counter was to create three different handleClick functions and say that the el.innerHTML === imgAry[i].path,(inside a for loop) then increase the numClicks variable that way. But that seemed like a lot of extra work. I am sure there is an easier way to say if this id is clicked and that innerHTML matches the imgAry[i].path, then increase the numCLick variable.
