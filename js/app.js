@@ -1,5 +1,6 @@
 //js will go here\
 var imgAry = [];
+var emptyAry = [];
 var elOne = document.getElementById('img-1');
 var elTwo = document.getElementById('img-2');
 var elThree = document.getElementById('img-3');
@@ -42,22 +43,18 @@ function randMath(max, min) {
   return calc;
 }
 
-var el = document.getElementById('img-1');
-
-var emptyAry = [];
-
 function testing() {
   while(emptyAry.length < 3){
     var randNum = randMath(imgAry.length, 0);
     var five = imgAry[randNum];
-    if (emptyAry.length == 0) {
-      imgAry[randNum].numAppearences ++;
+    if(emptyAry.length == 0) {
+      imgAry[randNum].numAppearences++;
       emptyAry.push(five.path);
-    } else if(emptyAry[0].path !== five.path && emptyAry.length === 1) {
-      imgAry[randNum].numAppearences ++;
+    } else if(emptyAry[0] !== five.path && emptyAry.length == 1) {
+      imgAry[randNum].numAppearences++;
       emptyAry.push(five.path);
-    } else if (emptyAry[0].path !== five.path && emptyAry[1] !== five.path && emptyAry.length === 2) {
-      imgAry[randNum].numAppearences ++;
+    } else if(emptyAry[0] !== five.path && emptyAry[1] !== five.path && emptyAry.length === 2) {
+      imgAry[randNum].numAppearences++;
       emptyAry.push(five.path);
       return emptyAry;
     }
@@ -85,8 +82,4 @@ function handleClick() {
     handleImages();
   }
 }
-  // for(var i = 0; i < emptyAry.length; i++){
-  //   if(emptyAry[i].path === clicked) {
-  //     console.log(emptyAry[i]);
-  //   }
-  // }
+//The only way I could think to do the counter was to create three different handleClick functions and say that the el.innerHTML === imgAry[i].path,(inside a for loop) then increase the numClicks variable that way. But that seemed like a lot of extra work. I am sure there is an easier way to say if this id is clicked and that innerHTML matches the imgAry[i].path, then increase the numCLick variable.
