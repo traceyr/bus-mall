@@ -1,5 +1,5 @@
 var imgAry = [];
-var emptyAry = [];
+var generateImgArry = [];
 var el = document.getElementById('imgs');
 var bt = document.getElementById('btn');
 var totalClicks = 0;
@@ -39,29 +39,29 @@ function randMath(max, min) {
   return calc;
 }
 
-function testing() {
-  while(emptyAry.length < 3){
+function renderImages() {
+  while(generateImgArry.length < 3){
     var randNum = randMath(imgAry.length, 0);
     var five = imgAry[randNum];
-    if(emptyAry.length == 0) {
+    if(generateImgArry.length == 0) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
-    } else if(emptyAry[0].path !== five.path && emptyAry.length == 1) {
+      generateImgArry.push(five);
+    } else if(generateImgArry[0].path !== five.path && generateImgArry.length == 1) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
-    } else if(emptyAry[0].path !== five.path && emptyAry[1].path !== five.path && emptyAry.length === 2) {
+      generateImgArry.push(five);
+    } else if(generateImgArry[0].path !== five.path && generateImgArry[1].path !== five.path && generateImgArry.length === 2) {
       imgAry[randNum].numAppearences++;
-      emptyAry.push(five);
-      return emptyAry;
+      generateImgArry.push(five);
+      return generateImgArry;
     }
   }
 }
 
 function handleImages() {
-  testing();
-  for(var i = 0; i < emptyAry.length; i++) {
+  renderImages();
+  for(var i = 0; i < generateImgArry.length; i++) {
     var li = document.createElement('li');
-    li.innerHTML = emptyAry[i].path;
+    li.innerHTML = generateImgArry[i].path;
     el.appendChild(li);
   }
 }
@@ -77,7 +77,7 @@ function handleClick(event) {
         imgAry[i].numClicks++;
       }
     }
-    emptyAry = [];
+    generateImgArry = [];
     var elem = document.getElementById('imgs');
     elem.innerHTML = ' ';
     handleImages();
