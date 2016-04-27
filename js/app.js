@@ -82,7 +82,7 @@ function handleClick(event) {
     elem.innerHTML = ' ';
     handleImages();
   } else if(totalClicks === 25) {
-    btn.addEventListener('click', handleButtonChart);
+    bt.addEventListener('click', handleButtonChart);
   }
 }
 
@@ -97,18 +97,26 @@ function handleButtonChart() {
     votes.push(imgAry[t].numClicks);
   }
 
+  var numShown = [];
+  for(var t = 0; t < imgAry.length; t++) {
+    votes.push(imgAry[t].numClicks);
+  }
+
   var data = {
     labels: names,
     datasets: [
       {
         data: votes,
         backgroundColor:
-          '#5D5D81'
+          '#F58A07'
         ,
-        hoverBackgroundColor: [
-          '#3B3355'
-        ]
-      }]
+        hoverBackgroundColor:
+          '#F7F5FB'
+      },
+      {
+        data:
+      }
+    ]
   };
 
   var votesChart = document.getElementById('click-chart').getContext('2d');
