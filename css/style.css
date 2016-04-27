@@ -1,8 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+ }
+
+
 body {
-  background-color: #BFCDE0;
+  background-color: #707EA0;
+  text-align: center;
+  color: darkgrey;
+  margin-left: 10%;
+  margin-right:10%;
 }
 
-section {
+header {
+  height: 100px;
+  margin-bottom: 20px;
+  border-bottom: solid 2px #878472;
+  text-align: right;
+  color: black;
+}
+
+h1 {
+  margin-top: 5px;
 }
 
 ul li{
@@ -10,12 +29,22 @@ ul li{
 }
 
 ul {
+  margin-top: 75px;
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  flex-flow: row wrap;
 }
 
 button {
-  display: block;
+  margin-top: 30px;
   padding: 15px;
+  visibility: hidden;
+  margin-bottom: 30px;
+}
+
+img {
+  box-shadow: 8px 8px 10px #aaa;
+  margin-left: 10px;
+  margin-right: 10px;
 }
