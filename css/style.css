@@ -7,7 +7,7 @@
 body {
   background-color: #707EA0;
   text-align: center;
-  color: #E8EEF2;
+  color: darkgrey;
   margin-left: 10%;
   margin-right:10%;
 }
@@ -15,7 +15,7 @@ body {
 header {
   height: 100px;
   margin-bottom: 20px;
-  border-bottom: double 1px #878472;
+  border-bottom: solid 2px #878472;
   text-align: right;
   color: black;
 }
@@ -29,6 +29,7 @@ ul li{
 }
 
 ul {
+  margin-top: 75px;
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -36,11 +37,10 @@ ul {
 }
 
 button {
-  display: flex;
-  justify-content: space-around;
   margin-top: 30px;
-  display: block;
   padding: 15px;
+  visibility: hidden;
+  margin-bottom: 30px;
 }
 
 img {

@@ -82,6 +82,8 @@ function handleClick(event) {
     elem.innerHTML = ' ';
     handleImages();
   } else if(totalClicks === 25) {
+    var el = document.querySelector('button');
+    el.style.visibility = 'visible';
     bt.addEventListener('click', handleButtonChart);
   }
 }
@@ -99,13 +101,14 @@ function handleButtonChart() {
 
   var numShown = [];
   for(var t = 0; t < imgAry.length; t++) {
-    votes.push(imgAry[t].numClicks);
+    numShown.push(imgAry[t].numAppearences);
   }
 
   var data = {
     labels: names,
     datasets: [
       {
+        label: 'Number of Votes',
         data: votes,
         backgroundColor:
           '#F58A07'
@@ -114,7 +117,13 @@ function handleButtonChart() {
           '#F7F5FB'
       },
       {
-        data:
+        label: 'Number of Times Shown',
+        data: numShown,
+        backgroundColor:
+          '#084887'
+        ,
+        hoverBackgroundColor:
+          '#F9AB55'
       }
     ]
   };
@@ -123,6 +132,9 @@ function handleButtonChart() {
 
   var clicksChart = new Chart(votesChart, {
     type: 'bar',
-    data: data
+    data: data,
+    options: {
+      responsive: false
+    }
   });
 }
