@@ -76,6 +76,7 @@ function handleClick(event) {
       if(event.target.id === imgAry[i].imgName) {
         imgAry[i].numClicks++;
       }
+      localStorage.setItem('imgData', JSON.stringify(imgAry));
     }
     generateImgArry = [];
     var elem = document.getElementById('imgs');
@@ -88,21 +89,20 @@ function handleClick(event) {
   }
 }
 
-function handleButtonChart() {
-  var names = [];
+var numShown = [];
+var votes = [];
+var names = [];
+
+function createArraysForChart() {
   for(var t = 0; t < imgAry.length; t++) {
     names.push(imgAry[t].imgName);
-  }
-
-  var votes = [];
-  for(var t = 0; t < imgAry.length; t++) {
     votes.push(imgAry[t].numClicks);
-  }
-
-  var numShown = [];
-  for(var t = 0; t < imgAry.length; t++) {
     numShown.push(imgAry[t].numAppearences);
   }
+}
+
+function handleButtonChart() {
+  createArraysForChart();
 
   var data = {
     labels: names,
@@ -138,3 +138,14 @@ function handleButtonChart() {
     }
   });
 }
+
+(function checkLocal() {
+  if (localStorage.imgData) {
+    console.log('Local storage exists');
+    var parsedImgData = JSON.parse(localStorage.imgData);
+    imgAry = parsedImgData;
+    createArraysForChart();
+  } else {
+    console.log('Local storage doesnt exist');
+  }
+})();
