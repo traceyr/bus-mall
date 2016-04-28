@@ -5,9 +5,9 @@
 
 
 body {
-  background-color: #707EA0;
+  background-color: #AFBBD1;
   text-align: center;
-  color: darkgrey;
+  color: #272932;
   margin-left: 10%;
   margin-right:10%;
 }
@@ -15,9 +15,9 @@ body {
 header {
   height: 100px;
   margin-bottom: 20px;
-  border-bottom: solid 2px #878472;
+  border-bottom: solid 2px #272932;
   text-align: right;
-  color: black;
+  color: #272932;
 }
 
 h1 {

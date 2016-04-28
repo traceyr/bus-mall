@@ -86,12 +86,14 @@ function handleClick(event) {
     var el = document.querySelector('button');
     el.style.visibility = 'visible';
     bt.addEventListener('click', handleButtonChart);
+    stopButton = true;
   }
 }
 
 var numShown = [];
 var votes = [];
 var names = [];
+var stopButton = false;
 
 function createArraysForChart() {
   for(var t = 0; t < imgAry.length; t++) {
@@ -102,6 +104,11 @@ function createArraysForChart() {
 }
 
 function handleButtonChart() {
+
+  if(stopButton === true) {
+    bt.removeEventListener('click', handleButtonChart);
+  }
+
   createArraysForChart();
 
   var data = {
@@ -110,6 +117,7 @@ function handleButtonChart() {
       {
         label: 'Number of Votes',
         data: votes,
+        borderColor: '#000000',
         backgroundColor:
           '#F58A07'
         ,
