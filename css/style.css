@@ -53,7 +53,14 @@ ul {
   flex-flow: row wrap;
 }
 
-button {
+#btn {
+  margin-top: 30px;
+  padding: 15px;
+  visibility: hidden;
+  margin-bottom: 30px;
+}
+
+#btn-2 {
   margin-top: 30px;
   padding: 15px;
   visibility: hidden;
