@@ -2,6 +2,7 @@ var imgAry = [];
 var generateImgArry = [];
 var el = document.getElementById('imgs');
 var bt = document.getElementById('btn');
+var buttn = document.getElementById('btn-2');
 var totalClicks = 0;
 
 function OurProducts(imgName, imgType, path) {
@@ -83,15 +84,19 @@ function handleClick(event) {
     elem.innerHTML = ' ';
     handleImages();
   } else if(totalClicks === 25) {
-    var el = document.querySelector('button');
-    el.style.visibility = 'visible';
+    // var el = document.querySelectorAll('button');
+    bt.style.visibility = 'visible';
+    buttn.style.visibility = 'visible';
     bt.addEventListener('click', handleButtonChart);
+    buttn.addEventListener('click', handleButtonMore);
+    stopButton = true;
   }
 }
 
 var numShown = [];
 var votes = [];
 var names = [];
+var stopButton = false;
 
 function createArraysForChart() {
   for(var t = 0; t < imgAry.length; t++) {
@@ -102,6 +107,11 @@ function createArraysForChart() {
 }
 
 function handleButtonChart() {
+
+  if(stopButton === true) {
+    bt.removeEventListener('click', handleButtonChart);
+  }
+
   createArraysForChart();
 
   var data = {
@@ -110,6 +120,7 @@ function handleButtonChart() {
       {
         label: 'Number of Votes',
         data: votes,
+        borderColor: '#000000',
         backgroundColor:
           '#F58A07'
         ,
@@ -137,6 +148,12 @@ function handleButtonChart() {
       responsive: false
     }
   });
+}
+
+function handleButtonMore() {
+  totalClicks = 15;
+  bt.style.visibility = 'hidden';
+  buttn.style.visibility = 'hidden';
 }
 
 (function checkLocal() {

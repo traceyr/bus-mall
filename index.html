@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>Bus Mall</title>
+  <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
   <script src="js/chart.js"></script>
 </head>
@@ -10,12 +11,29 @@
 <body>
   <header id="desc-sect">
     <h1>Bus Mall</h1>
-    <p>
-      Welcome to bus mall. Click on the image below you are most likely to buy!
-    </p>
+    <h6>
+      Welcome to Bus Mall user input survey.
+    </h6>
+    <h6>It is like Sky Mall, but serving the Puget Sound bus system!</h6>
+    <div class-"bus-img">
+      <img src="images/bus.png" class="img-bus"/>
+      <img src="images/bus.png" class="img-bus"/>
+    </div>
+
   </header>
 
   <main>
+
+    <section>
+      <p>
+        Rich barista, mocha seasonal ristretto whipped robust mazagran. Frappuccino mocha at decaffeinated eu whipped grinder mazagran mocha that. Grinder seasonal variety latte spoon crema that spoon. Sit id aroma crema, acerbic sugar aged, single shot caffeine plunger pot lungo caramelization. Filter caramelization viennese instant id, robusta redeye cultivar saucer whipped percolator fair trade.
+      </p>
+
+      <p>
+        To use: Click on the image below that you would most likely to buy. Once finished, a button will appear that will let you view how many times an item was shown and how many times you chose it.
+      </p>
+    </section>
+
     <section>
       <ul id="imgs">
         <li id="img-1"></li>
@@ -26,13 +44,19 @@
 
     <section>
       <button type="button" id="btn">Click Me For Results!</button>
+      <button type="button" id="btn-2">10 more times!</button>
     </section>
 
     <section>
-      <canvas id="click-chart" height="300" width="500"></canvas>
+      <canvas id="click-chart" height="500" width="950"></canvas>
     </section>
   </main>
 
+<footer>
+  <p>
+    Fake CopyRight 2016
+  </p>
+</footer>
 
   <script src="js/app.js"></script>
 </body>

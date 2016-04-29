@@ -5,23 +5,40 @@
 
 
 body {
-  background-color: #707EA0;
+  font-family: 'Lora', serif;
+  background-color: #AFBBD1;
   text-align: center;
-  color: darkgrey;
+  color: #272932;
   margin-left: 10%;
   margin-right:10%;
 }
 
 header {
-  height: 100px;
+  display: inline-block;
   margin-bottom: 20px;
-  border-bottom: solid 2px #878472;
-  text-align: right;
-  color: black;
+  border-bottom: solid 2px #272932;
+  text-align: center;
+  color: #272932;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 h1 {
   margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+p {
+  text-align: left;
+  text-indent: 50px;
+  margin-bottom: 10px;
 }
 
 ul li{
@@ -36,7 +53,14 @@ ul {
   flex-flow: row wrap;
 }
 
-button {
+#btn {
+  margin-top: 30px;
+  padding: 15px;
+  visibility: hidden;
+  margin-bottom: 30px;
+}
+
+#btn-2 {
   margin-top: 30px;
   padding: 15px;
   visibility: hidden;
@@ -47,4 +71,28 @@ img {
   box-shadow: 8px 8px 10px #aaa;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+footer {
+  border-top: solid 2px #272932;
+}
+
+footer p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.bus-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.img-bus {
+  width: 10%;
+  height: 10%;
+  box-shadow: none;
+  margin-bottom: 5px;
+  background-image: repeat-x;
 }
